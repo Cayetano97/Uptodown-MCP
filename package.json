@@ -1,0 +1,39 @@
+{
+  "name": "uptodown-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local stdio MCP server exposing the Uptodown Developers Console REST API as tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cayetano97/Uptodown-MCP.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "docs"
+  ],
+  "bin": {
+    "uptodown-mcp": "dist/index.js",
+    "uptodown-mcp-login": "dist/login.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "start": "node dist/index.js",
+    "login": "node dist/login.js",
+    "smoke": "node dist/smoke.js",
+    "test": "tsc -p tsconfig.test.json && node --test \".test-dist/test/*.test.js\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.2.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "playwright-core": "1.63.0",
+    "typescript": "7.0.2"
+  }
+}

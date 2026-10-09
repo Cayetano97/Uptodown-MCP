@@ -1,0 +1,16 @@
+node_modules/
+.test-dist/
+*.tsbuildinfo
+*.log
+
+# Local credentials - never commit these
+.env
+.env.local
+.env.*.local
+
+# Captured browser session (login helper output) and its persistent browser profile
+.uptodown-session.json
+.uptodown-browser/
+
+# Local tooling caches (skill registry)
+.atl/
