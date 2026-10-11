@@ -25,7 +25,7 @@
     "start": "node dist/index.js",
     "login": "node dist/login.js",
     "smoke": "node dist/smoke.js",
-    "test": "tsc -p tsconfig.test.json && node --test \".test-dist/test/*.test.js\""
+    "test": "tsc -p tsconfig.test.json && cd .test-dist && node --test"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.2.0",
