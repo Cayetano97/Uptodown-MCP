@@ -1,0 +1,2 @@
+# tsc rewrites dist/ on every build; keep it LF so rebuilds never dirty the tree (autocrlf=true)
+dist/** eol=lf
