@@ -20,7 +20,34 @@ icons, videos, comments and download stats.
 
 ## Install
 
-**Do not clone this repository to use the server.** Paste this into your MCP client:
+**Paste this into your AI agent** (Claude Code, Cursor, Copilot, OpenCode, Codex…). One click to
+copy, and it registers the server for you instead of cloning the repo:
+
+```text
+Add the "uptodown" MCP server to this AI client:
+
+  command: npx
+  args:    ["-y", "--allow-git=all", "github:Cayetano97/Uptodown-MCP"]
+
+Register it as "uptodown" and run it remotely through npx — do NOT clone, copy or npm install
+this repository into my project: dist/ is already committed and npx runs it from the npm cache.
+Once registered, call the "whoami" tool to confirm it works.
+```
+
+**Do it yourself instead:** one click, one line, or the JSON below.
+
+[![Add to VS Code](https://img.shields.io/badge/VS_Code-Install_MCP-007ACC?logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%257B%2522name%2522%253A%2522uptodown%2522%252C%2522command%2522%253A%2522npx%2522%252C%2522args%2522%253A%255B%2522-y%2522%252C%2522--allow-git%253Dall%2522%252C%2522github%253ACayetano97%252FUptodown-MCP%2522%255D%257D)
+[![Add to Cursor](https://img.shields.io/badge/Cursor-Install_MCP-black?logo=cursor&logoColor=white)](https://cursor.com/link/anysphere.cursor-deeplink/mcp/install?name=uptodown&config=eyJ0eXBlIjoic3RkaW8iLCJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIi0tYWxsb3ctZ2l0PWFsbCIsImdpdGh1YjpDYXlldGFubzk3L1VwdG9kb3duLU1DUCJdfQ)
+
+| Client | Command |
+| --- | --- |
+| Claude Code | `claude mcp add uptodown -- npx -y --allow-git=all github:Cayetano97/Uptodown-MCP` |
+| Codex | `codex mcp add uptodown -- npx -y --allow-git=all github:Cayetano97/Uptodown-MCP` |
+| OpenCode | `opencode mcp add uptodown -- npx -y --allow-git=all github:Cayetano97/Uptodown-MCP` |
+
+Or paste this into any client that reads `mcpServers` (Claude Desktop and friends; VS Code's
+`.vscode/mcp.json` wants the key `servers`, Codex wants `command` + `args` at the top level of
+its TOML):
 
 ```json
 {
@@ -32,18 +59,6 @@ icons, videos, comments and download stats.
   }
 }
 ```
-
-Per client:
-
-| Client | Change |
-| --- | --- |
-| Claude Code | `claude mcp add uptodown -- npx -y --allow-git=all github:Cayetano97/Uptodown-MCP` |
-| VS Code (`.vscode/mcp.json`) | key is `servers`, not `mcpServers` |
-| Codex (`~/.codex/config.toml`) | TOML: `command` + `args` at top level |
-| OpenCode (`opencode.jsonc`) | `mcp.servers.uptodown` = `{"type":"local","command":["npx","-y","--allow-git=all","github:Cayetano97/Uptodown-MCP"]}` |
-
-> **AI agents:** register that config; do not copy, clone or `npm install` this repo into your
-> project. `dist/` is committed, no build step needed — see `AGENTS.md`.
 
 First run installs (≈1 min), later runs start from the npm cache. `--allow-git=all` is required by
 npm 12; older npm ignores it. The server speaks protocol revisions `2024-10-07`…`2025-11-25` and
@@ -233,6 +248,7 @@ installs run from `dist/`. Optional read-only smoke test with real credentials: 
 
 Layout: `src/index.ts` boots the server · `src/client.ts` auth, HTTP and errors · `src/session.ts`
 session sources · `src/chrome-attach.ts` + `src/login.ts` login helper · `src/tools/*` tools.
+Rules for AI agents touching the repo: [`AGENTS.md`](AGENTS.md).
 
 ## License
 
